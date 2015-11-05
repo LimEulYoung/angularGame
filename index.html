@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link rel="stylesheet" href="css/bootstrap.min.css"/>
+	<link rel="stylesheet" href="css/app.css">
+	<script scr="lib/angular/angular-ui.js"></script>
+	<script src="lib/bootstrap.min.js"></script>
+	<script src="lib/jquery-1.11.3.min.js"></script>
+	<script src="lib/angular/angular.min.js"></script>
+	<script src="lib/angular/angular-route.min.js"></script>
+	<script scr="lib/angular/angular-cookies.min.js"></script>
+
+	<script src="script/app.js"></script>
+	<script src="modules/game/controller.js"></script>
+	<script src="modules/main/controller.js"></script>
+	<script src="modules/game/game1/controller.js"></script>
+	<script src="modules/game/game2/controller.js"></script>
+	<script src="modules/game/game3/controller.js"></script>
+	<script src="modules/main/services.js"></script>
+	<script src="modules/game/game1/game.js"></script>
+</head>
+<body ng-app="myApp">
+	<p><a href="#/main">goto main</a></p>
+	<a href="#/main">main</a>
+	<a href="#/game">game</a>
+	<div ng-view></div>
+</body>
+</html>
