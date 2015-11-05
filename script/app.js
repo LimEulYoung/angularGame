@@ -3,9 +3,11 @@ angular.module('home',[]);
 angular.module('game1',[]);
 angular.module('game2',[]);
 angular.module('game3',[]);
+angular.module('dashboard',[]);
+angular.module('ranking',[]);
 
 
-var myApp = angular.module('myApp', ['ngRoute','home','main','game1','game2','game3']);
+var myApp = angular.module('myApp', ['ngRoute','home','main','game1','game2','game3','dashboard','ranking']);
 
 myApp.config(['$routeProvider', function ($routeProvider) {
 
@@ -30,6 +32,14 @@ myApp.config(['$routeProvider', function ($routeProvider) {
         .when('/game', {
             controller: 'gameController',
             templateUrl: 'modules/game_home/views/game.html'
+        })
+        .when('/dashboard',{
+            controller: 'dashboardController',
+            templateUrl: 'modules/dashboard/views/dashboard.html'
+        })
+        .when('/ranking',{
+            controller: 'rankingController',
+            templateUrl: 'modules/ranking/views/ranking.html'
         })
 
 
