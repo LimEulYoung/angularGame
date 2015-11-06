@@ -5,9 +5,10 @@ angular.module('game2',[]);
 angular.module('game3',[]);
 angular.module('dashboard',[]);
 angular.module('ranking',[]);
+angular.module('login',[]);
 
 
-var myApp = angular.module('myApp', ['ngRoute','home','main','game1','game2','game3','dashboard','ranking']);
+var myApp = angular.module('myApp', ['ngRoute','home','main','game1','game2','game3','dashboard','ranking','login']);
 
 myApp.config(['$routeProvider', function ($routeProvider) {
 
@@ -41,7 +42,23 @@ myApp.config(['$routeProvider', function ($routeProvider) {
             controller: 'rankingController',
             templateUrl: 'modules/ranking/views/ranking.html'
         })
-
+        .when('/login',{
+            controller: 'loginController',
+            templateUrl: 'modules/login/views/login.html'
+        })
 
         .otherwise({ redirectTo: '/main' });
 }]);
+
+
+myApp.factory('loginService', function() {
+    var loginVariable = {};
+    loginVariable.isLogin = false;
+        
+    return loginVariable;
+});
+myApp.controller('myAppController',
+    ['$scope','loginService',
+    function ($scope,loginService) {
+        $scope.loginService = loginService;      
+    }]);

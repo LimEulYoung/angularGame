@@ -21,9 +21,15 @@
 	<script src="modules/dashboard/controller.js"></script>
 	<script src="modules/main/services.js"></script>
 	<script src="modules/game/game1/game.js"></script>
+	<script src="modules/login/controller.js"></script>
+	
 </head>
-<body ng-app="myApp">
-	<p><a href="#/main">goto main</a></p>
+<body ng-app="myApp" ng-controller='myAppController'>
+	<p>
+		{{loginService.isLogin}}
+		<a href="#/main">goto main</a>
+		<div ng-show='true'><a href="#/login">login</a></div>
+	</p>
 	<a href="#/main">main</a>
 	<a href="#/game">game</a>
 	<a href="#/dashboard">dashboard</a>
