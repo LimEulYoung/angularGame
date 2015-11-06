@@ -1,1 +1,34 @@
-this is dash board
+<div class="row">
+	<div class="col-md-1">번호</div>
+	<div class="col-md-3">제목</div>
+	<div class="col-md-2">작성자</div>
+	<div class="col-md-2">작성 날짜</div>
+</div>
+<div ng-repeat='x in boards | filter:query'>
+	<div class="row">
+		<div class="col-md-1">
+			{{$index}}
+		</div>
+		<div class="col-md-3">
+			<a href="#/board/{{$index}}">
+				{{x.subject}}
+			</a>
+		</div>
+		<div class="col-md-2">
+			{{x.from}}
+		</div>
+		<div class="col-md-2">
+			{{x.datetime | date}}
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-6">
+		<form name="form" ng-submit="search()">
+			<label for="inputbox">찾기</label>
+			<input type="text" name="inputbox" id="inputbox" ng-model= 'inputbox'/>
+			<button type="submit">검색</button>
+		</form>
+	</div>
+	<div class="col-md-2" ng-show='!loginService.isLogin'><a href="#/write">쓰기</a></div>
+</div>

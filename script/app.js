@@ -3,12 +3,13 @@ angular.module('home',[]);
 angular.module('game1',[]);
 angular.module('game2',[]);
 angular.module('game3',[]);
-angular.module('dashboard',[]);
+angular.module('board',[]);
 angular.module('ranking',[]);
 angular.module('login',[]);
+angular.module('signin',[]);
 
 
-var myApp = angular.module('myApp', ['ngRoute','home','main','game1','game2','game3','dashboard','ranking','login']);
+var myApp = angular.module('myApp', ['ngRoute','home','main','game1','game2','game3','board','ranking','login','signin']);
 
 myApp.config(['$routeProvider', function ($routeProvider) {
 
@@ -34,8 +35,8 @@ myApp.config(['$routeProvider', function ($routeProvider) {
             controller: 'gameController',
             templateUrl: 'modules/game_home/views/game.html'
         })
-        .when('/dashboard',{
-            controller: 'dashboardController',
+        .when('/board',{
+            controller: 'boardController',
             templateUrl: 'modules/dashboard/views/dashboard.html'
         })
         .when('/ranking',{
@@ -45,6 +46,19 @@ myApp.config(['$routeProvider', function ($routeProvider) {
         .when('/login',{
             controller: 'loginController',
             templateUrl: 'modules/login/views/login.html'
+        })
+
+        .when('/board/:id',{
+            controller: 'board_innerController',
+            templateUrl: 'modules/dashboard/views/board_inner.html'
+        })
+        .when('/write',{
+            controller: 'writeController',
+            templateUrl: 'modules/dashboard/views/write.html'
+        })
+        .when('/signin',{
+            controller: 'signinController',
+            templateUrl: 'modules/signin/views/signin.html'
         })
 
         .otherwise({ redirectTo: '/main' });

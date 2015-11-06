@@ -11,11 +11,12 @@ var loginApp=angular.module('login', []);
 
 
 loginApp.controller('loginController',
-    ['$scope','loginService','$location','$http',
-    function ($scope,loginService,$location,$http) {
+    ['$scope','loginService','$location','$http','user',
+    function ($scope,loginService,$location,$http,user) {
 		$scope.loginService = loginService;
-		$http.get("json/user.json")
-			.success(function (response) {$scope.user = response.records;});
+		user.success(function(data) {
+            $scope.user = data;
+        });
 
 
 		$scope.login = function(){

@@ -1,9 +1,10 @@
 var rankingApp = angular.module('ranking',[]);
 
 rankingApp.controller('rankingController',
-    ['$scope', '$http',
-    function ($scope, $http) {
+    ['$scope', '$http','user',
+    function ($scope, $http,user) {
     	$scope.orderProp = 'total';
-      	$http.get("json/user.json")
-			.success(function (response) {$scope.user = response.records;});
+      	user.success(function(data) {
+            $scope.user = data;
+        });
     }]);

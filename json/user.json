@@ -1,5 +1,5 @@
-{
-"records": [
+
+[
   {
     "username" : "test1",
     "password" : "test1",
@@ -137,4 +137,3 @@
     "total" : 79
   }
 ]
-}
