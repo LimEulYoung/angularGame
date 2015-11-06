@@ -53,12 +53,20 @@ myApp.config(['$routeProvider', function ($routeProvider) {
 
 myApp.factory('loginService', function() {
     var loginVariable = {};
-    loginVariable.isLogin = false;
-        
+    loginVariable.isLogin = true;
+    loginVariable.isLogout = !loginVariable.isLogin;
+    loginVariable.username = '';
+    loginVariable.password = '';  
     return loginVariable;
 });
 myApp.controller('myAppController',
     ['$scope','loginService',
     function ($scope,loginService) {
-        $scope.loginService = loginService;      
+        $scope.loginService = loginService;
+        $scope.isLogouted = function(){
+            $scope.loginService.isLogout = !$scope.loginService.isLogout;
+            $scope.loginService.isLogin = !$scope.loginService.isLogin;
+            $scope.loginService.username = '';
+            $scope.loginService.password = '';
+        }      
     }]);

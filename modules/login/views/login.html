@@ -1,4 +1,18 @@
-<div ng-click='isLogined()'>
-	<button>submit</button>
-</div>
-{{loginService.isLogin}}
+<form name="form" ng-submit='login()'>
+	<div>
+		<label for="username">ID</label>
+		<input type="text" name="username" id="username" ng-model= 'username' required />
+		<span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+	</div>
+	<div>
+		<label for="password">PWD</label>
+		<input type="password" name="password" id="password" ng-model="password" required />
+		<span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+	</div>
+	<div>
+		<p>{{errormessage}}</p>
+		<button type="submit" ng-disabled="form.$invalid">login</button>
+	</div>
+</form>
+
+

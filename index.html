@@ -25,11 +25,11 @@
 	
 </head>
 <body ng-app="myApp" ng-controller='myAppController'>
-	<p>
-		{{loginService.isLogin}}
-		<a href="#/main">goto main</a>
-		<div ng-show='true'><a href="#/login">login</a></div>
-	</p>
+	<a href="#/main">goto main</a>
+	<a href="#/login" ng-show='loginService.isLogin'>login</a>
+	<a href="#/main" ng-show='loginService.isLogout' ng-click='isLogouted()'>logout</a>
+	<span ng-show='loginService.isLogout'>hello,{{loginService.username}}!</span>
+	<hr>
 	<a href="#/main">main</a>
 	<a href="#/game">game</a>
 	<a href="#/dashboard">dashboard</a>
