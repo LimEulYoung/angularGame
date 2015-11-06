@@ -1,1 +1,24 @@
-this is ranking board
+Search: <input ng-model="query">
+Sort by:
+<select ng-model="orderProp">
+  <option value="game1_score">기억력 게임</option>
+  <option value="game2_score">색깔 맞추기 게임</option>
+  <option value="game3_score">알 깨기 게임</option>
+  <option value="total">종합</option>
+</select>
+<div class="row">
+	<div class="col-md-1 text-center">랭킹</div>
+	<div class="col-md-1 text-center">ID</div>
+	<div class="col-md-1 text-center">기억력 게임</div>
+	<div class="col-md-1 text-center">색깔 맞추기 게임</div>
+	<div class="col-md-1 text-center">알 깨기 게임</div>
+	<div class="col-md-1 text-center">종합</div>
+</div>
+<div class="row" ng-repeat="x in user | filter:query |orderBy:orderProp:true">
+	<div class="col-md-1 text-center">{{$index+1}}</div>
+	<div class="col-md-1 text-center">{{x.username}}</div>
+	<div class="col-md-1 text-center" >{{x.game1_score}}</div>
+	<div class="col-md-1 text-center">{{x.game2_score}}</div>
+	<div class="col-md-1 text-center">{{x.game3_score}}</div>
+	<div class="col-md-1 text-center">{{x.total}}</div>
+</div>
