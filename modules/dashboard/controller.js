@@ -26,11 +26,31 @@ boardApp.controller('boardController',
 
 
 boardApp.controller('board_innerController',
-	['$scope','$routeParams','boards',
-	function($scope,$routeParams,boards){
+	['$scope','$routeParams','boards','loginService','$location',
+	function($scope,$routeParams,boards,loginService,$location){
+        $scope.loginService = loginService;
+        
 		boards.success(function(data) {
     		$scope.boards = data[$routeParams.id];
+            $scope.board = data;
     	});
+        $scope.test = function(){
+            if ($scope.boards.from == $scope.loginService.username) {
+                return true;
+            }
+            else{
+                return false;
+            }
+        };
+        $scope.edit_board = function(){
+            $location.path('/edit/'+$routeParams.id);
+        };
+        $scope.delete_board = function(){
+            $scope.board.splice($routeParams.id, 1);
+            alert('deleted!');
+            $location.path('/board');
+        };
+
     }])
 boardApp.controller('writeController',
     ['$scope','loginService','$location','boards',
@@ -38,11 +58,26 @@ boardApp.controller('writeController',
         $scope.loginService = loginService;
         boards.success(function(data) {
             $scope.boards = data;
-            alert($scope.boards[0].from);
         });
         $scope.submit = function(){
             $scope.boards.push({'from':$scope.loginService.username, 'datetime': Date.now(), 'subject':$scope.title,'message':$scope.message,'unread':true});
 
             $location.path('/board');
       }
+    }]);
+
+
+boardApp.controller('editController',
+    ['$scope','boards','$routeParams', '$location','loginService',
+    function ($scope,boards,$routeParams,$location,loginService) {
+        $scope.loginService = loginService;
+        boards.success(function(data) {
+            $scope.boards = data[$routeParams.id];
+            $scope.board = data;
+        });
+        $scope.edit = function(){
+            $scope.board[$routeParams.id] = {'from':$scope.loginService.username, 'datetime': Date.now(), 'subject':$scope.title,'message':$scope.message,'unread':true};
+
+            $location.path('/board/'+$routeParams.id);
+        }
     }]);

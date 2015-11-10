@@ -60,6 +60,10 @@ myApp.config(['$routeProvider', function ($routeProvider) {
             controller: 'signinController',
             templateUrl: 'modules/signin/views/signin.html'
         })
+        .when('/edit/:id',{
+            controller : 'editController',
+            templateUrl: 'modules/dashboard/views/edit.html'
+        })
 
         .otherwise({ redirectTo: '/main' });
 }]);

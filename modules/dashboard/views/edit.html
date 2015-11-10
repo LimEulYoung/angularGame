@@ -1,0 +1,13 @@
+<form name="form" ng-submit='edit()'>
+	<div>
+		<label for="title">제목</label>
+		<input type="text" name="title" id="title" ng-value='boards.subject' ng-model = "title"/>
+	</div>
+	<div>
+		<label for="message">내용</label>
+		<input type="text" name="message" id="message" ng-value='boards.message' ng-model="message"/>
+	</div>	
+	<div>
+		<button type="submit">수정</button>
+	</div>
+</form>

@@ -1,14 +1,14 @@
-<div class="row">
-	<div class="col-md-2">
-		{{boards.from}}
-	</div>
-	<div class="col-md-3">
-		{{boards.subject}}
-	</div>
-	<div class="col-md-2">
-		{{boards.datetime | date}}
-	</div>
+<div>
+	작성자: {{boards.from}}
 </div>
-<p>
-	{{boards.message}}
-</p>
+<div>
+	제목: {{boards.subject}}
+</div>
+<div>
+	작성일:{{boards.datetime | date}}
+</div>
+	내용 :{{boards.message}}
+<div ng-show="test()">
+	<button ng-click="edit_board()">edit</button>
+	<button ng-click="delete_board()">delete</button>
+</div>
