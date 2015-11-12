@@ -3,6 +3,7 @@
 		<label for="username">ID</label>
 		<input type="text" name="username" id="username" ng-model= 'username' required />
 		<span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+		{{errormessage2}}
 	</div>
 	<div>
 		<label for="password">PWD</label>
@@ -11,7 +12,7 @@
 	</div>
 	<div>
 		<label for="password2">confirm</label>
-		<input type="password2" name="password2" id="password2" ng-model="password2" required />
+		<input type="password" name="password2" id="password2" ng-model="password2" required />
 		{{errormessage}}
 	</div>
 	<div>

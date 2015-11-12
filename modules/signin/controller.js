@@ -14,15 +14,30 @@ signinApp.factory('user', ['$http', function($http) {
 signinApp.controller('signinController',
     ['$scope','$location','user',
     function ($scope,$location,user) {
+        var valiad_id = false;
         
         user.success(function(data) {
             $scope.user = data;
         });
         $scope.submit = function(){
-        	if ($scope.password == $scope.password2) {
+        	var count = 0;
+        	for(var i = $scope.user.length - 1; i >= 0; i--){
+              	if ($scope.username == $scope.user[i].username) {
+                	$scope.errormessage2 = 'id is already used';
+                	count++;
+                	break;
+              	};
+            }
+            if(count == 0){
+              		valiad_id = true;
+              		$scope.errormessage2='';
+              	}
+
+        	if (($scope.password == $scope.password2) && valiad_id) {
         		$scope.signin();
+        		alert('hi!'+$scope.username);
         	}
-        	else{
+        	else if(valiad_id && ($scope.password != $scope.password2)){
         		$scope.errormessage = 'different password!!';
         	}
         }

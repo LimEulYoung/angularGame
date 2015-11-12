@@ -1,13 +1,23 @@
 var game2App = angular.module('game2',[]);
 
-game2App.controller('game2Controller',function game2Controller($scope){	
+game2App.controller('game2Controller',function game2Controller($scope,loginService,user){
+  var index = 0;
+  $scope.loginService = loginService;
+  user.success(function(data) {
+            $scope.user = data;
+            for(var i = $scope.user.length - 1; i >= 0; i--){
+              if ($scope.loginService.username == $scope.user[i].username) {
+              	index = i;
+                
+              };
+            }
+        });
     $scope.UI={};	
 	$scope.game={};
 	$scope.totalProblem=100;
 	$scope.rightScore=5;//how much score you get when get a correct answer
 	$scope.wrongScore=-3;//how much score you get when get a wrong answer
 	$scope.totalTime=30;
-	
 	$scope.stopGame=function(){ 	
 		$scope.UI.showStartButton=true;
 		$scope.UI.showGameButton=false;
@@ -52,6 +62,10 @@ game2App.controller('game2Controller',function game2Controller($scope){
 				 $scope.stopGame();	
 				 $scope.game.totalScore=$scope.game.rightCount*$scope.rightScore+$scope.game.wrongCount*$scope.wrongScore;
 				 $scope.modalShown = true;
+				 if ($scope.user[index].game2_score <$scope.game.totalScore ) {
+				 	$scope.user[index].game2_score = $scope.game.totalScore;
+				 };
+				 
   			
 				}                       
 			});

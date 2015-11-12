@@ -5,7 +5,7 @@
     "password" : "test1",
     "game1_score" : 41,
     "game2_score" : 28,
-    "game3_score" : 22,
+    "game3_score" : 2200,
     "total" : 91
   },
   {
@@ -13,7 +13,7 @@
     "password" : "test2",
     "game1_score" : 20,
     "game2_score" : 50,
-    "game3_score" : 13,
+    "game3_score" : 1300,
     "total" : 83
   },
   {

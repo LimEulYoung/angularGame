@@ -1,11 +1,28 @@
 var game3App = angular.module('game3',[]);
 
 game3App.controller('game3Controller',
-    ['$scope','$timeout',
-    function ($scope,$timeout) {
-    	$scope.count = 0;
+    ['$scope','$timeout','user','loginService',
+    function ($scope,$timeout,user,loginService) {
+        var index = 0;
+        $scope.loginService = loginService;
+        user.success(function(data) {
+            $scope.user = data;
+            for(var i = $scope.user.length - 1; i >= 0; i--){
+              if ($scope.loginService.username == $scope.user[i].username) {
+                index = i;
+                
+              };
+            }
+        });
+        
+    	  $scope.count = 0;
       	$scope.img = 'egg1.png';
       	$scope.counter = 0;
+
+        setTimeout(function(){
+          $scope.count = $scope.user[index].game3_score;
+          $scope.clickEgg();
+        },10);
       	$scope.onTimeout = function(){
       		$scope.counter++;
       		mytimeout = $timeout($scope.onTimeout,1000);
@@ -28,5 +45,6 @@ game3App.controller('game3Controller',
       	else if($scope.count>4999){
       		$scope.img='egg6.png';
       	};
+        $scope.user[index].game3_score = $scope.count;
       }
     }]);
