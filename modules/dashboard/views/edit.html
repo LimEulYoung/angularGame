@@ -1,13 +1,14 @@
 <form name="form" ng-submit='edit()'>
 	<div>
 		<label for="title">제목</label>
-		<input type="text" name="title" id="title" ng-value='boards.subject' ng-model = "title"/>
+		<input type="text" style="max-width:200px;" class="form-control" name="title" id="title" ng-value='boards.subject' ng-model = "title"/>
 	</div>
-	<div>
+	<div ng-init='message=boards.subject'>
 		<label for="message">내용</label>
-		<input type="text" name="message" id="message" ng-value='boards.message' ng-model="message"/>
+		<textarea class="form-control" rows="5" type="text" class="form-control" name="message" id="message" ng-model="message">
+		</textarea>
 	</div>	
 	<div>
-		<button type="submit">수정</button>
+		<button type="submit" class="btn btn-default">수정</button>
 	</div>
 </form>

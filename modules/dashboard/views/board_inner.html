@@ -1,14 +1,21 @@
-<div>
-	작성자: {{boards.from}}
+<div class="row">
+	<div class="col-md-8">
+		<h2 class="form-signin-heading">{{boards.subject}}</h2>
+	</div>
+	<div class="col-md-2 text-right">
+		{{boards.datetime | date}}
+	</div>
+	<div class="col-md-2 text-right">
+		{{boards.from}}
+	</div>
 </div>
+<hr>
 <div>
-	제목: {{boards.subject}}
+	{{boards.message}}
 </div>
-<div>
-	작성일:{{boards.datetime | date}}
-</div>
-	내용 :{{boards.message}}
-<div ng-show="test()">
-	<button ng-click="edit_board()">edit</button>
-	<button ng-click="delete_board()">delete</button>
+<hr>
+<button class="btn btn-default" ng-click='list()'>목록</button>
+<div ng-show="test()" style="float:right">
+	<button class="btn btn-default" ng-click="edit_board()">edit</button>
+	<button class="btn btn-default" ng-click="delete_board()">delete</button>
 </div>

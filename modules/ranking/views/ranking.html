@@ -1,21 +1,37 @@
-Search: <input ng-model="query">
-Sort by:
-<select ng-model="orderProp">
-  <option value="game1_score">기억력 게임</option>
-  <option value="game2_score">색깔 맞추기 게임</option>
-  <option value="game3_score">알 깨기 게임</option>
-</select>
+<hr>
+<div class="row">
+	<div class="col-md-3">
+		<input class="form-control" placeholder="search" style=" max-width: 190px;float:left;"  ng-model="query">
+	</div>
+	<div class="col-md-3">
+		<div class="btn-group">
+			<button type="button" class="btn btn-default">sort by</button>
+			<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			<span class="caret"></span>
+			<span class="sr-only">Toggle Dropdown</span>
+			</button>
+			<ul class="dropdown-menu">
+				<li><a ng-click='game1()'>memory game</a></li>
+				<li><a ng-click='game2()'>color game</a></li>
+				<li><a ng-click='game3()'>break egg</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<hr>
 <div class="row">
 	<div class="col-md-1 text-center">랭킹</div>
-	<div class="col-md-1 text-center">ID</div>
-	<div class="col-md-1 text-center">기억력 게임</div>
-	<div class="col-md-1 text-center">색깔 맞추기 게임</div>
-	<div class="col-md-1 text-center">알 깨기 게임</div>
+	<div class="col-md-2 text-center">ID</div>
+	<div class="col-md-3 text-center">기억력 게임</div>
+	<div class="col-md-3 text-center">색깔 맞추기 게임</div>
+	<div class="col-md-3 text-center">알 깨기 게임</div>
+	<hr>
 </div>
 <div class="row" ng-repeat="x in user | filter:query |orderBy:orderProp:true">
 	<div class="col-md-1 text-center">{{$index+1}}</div>
-	<div class="col-md-1 text-center">{{x.username}}</div>
-	<div class="col-md-1 text-center" >{{x.game1_score}}</div>
-	<div class="col-md-1 text-center">{{x.game2_score}}</div>
-	<div class="col-md-1 text-center">{{x.game3_score}}</div>
+	<div class="col-md-2 text-center">{{x.username}}</div>
+	<div class="col-md-3 text-center" >{{x.game1_score}}</div>
+	<div class="col-md-3 text-center">{{x.game2_score}}</div>
+	<div class="col-md-3 text-center">{{x.game3_score}}</div>
+	<hr>
 </div>

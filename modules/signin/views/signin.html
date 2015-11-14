@@ -1,21 +1,27 @@
-<form name="form" ng-submit='submit()'>
-	<div>
-		<label for="username">ID</label>
-		<input type="text" name="username" id="username" ng-model= 'username' required />
-		<span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
-		{{errormessage2}}
-	</div>
-	<div>
-		<label for="password">PWD</label>
-		<input type="password" name="password" id="password" ng-model="password" required />
-		<span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
-	</div>
-	<div>
-		<label for="password2">confirm</label>
-		<input type="password" name="password2" id="password2" ng-model="password2" required />
-		{{errormessage}}
-	</div>
-	<div>
-		<button type="submit" ng-disabled="form.$invalid">sign in</button>
-	</div>
-</form>
+<div class="wrapper">
+	<form name="form" class="form-signin2" ng-submit='submit()'>
+	<h2 class="form-signin-heading">Registration</h2>
+		<div>
+			<label for="username">ID</label>
+			<input type="text" class="form-control" name="username" id="username" ng-model= 'username' required />
+			<p class="help-block">Username can contain any letters or numbers, without spaces</p>
+			<span ng-show="form.username.$dirty && form.username.$error.required" class="help-block">Username is required</span>
+			<p class="alert alert-danger" role="alert" ng-show='isID'>{{errormessage2}}</p>
+		</div>
+		<div>
+			<label for="password">Password</label>
+			<input type="password" class="form-control" name="password" id="password" ng-model="password" required />
+			<p class="help-block">Password should be at least 4 characters</p>
+			<span ng-show="form.password.$dirty && form.password.$error.required" class="help-block">Password is required</span>
+		</div>
+		<div>
+			<label for="password2">Password(Confirm)</label>
+			<input type="password" class="form-control" name="password2" id="password2" ng-model="password2" required />
+			<p class="help-block">Please confirm password</p>
+			<p class="alert alert-danger" role="alert" ng-show='isPWD'>{{errormessage}}</p>
+		</div>
+		<div>
+			<button type="submit" class="btn btn-lg btn-primary btn-block" ng-disabled="form.$invalid">sign up</button>
+		</div>
+	</form>
+</div>

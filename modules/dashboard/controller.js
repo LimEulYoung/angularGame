@@ -12,8 +12,8 @@ boardApp.factory('boards', ['$http', function($http) {
 
 
 boardApp.controller('boardController',
-    ['$scope','boards','loginService',
-    function ($scope,boards,loginService) {
+    ['$scope','boards','loginService','$location',
+    function ($scope,boards,loginService,$location) {
         $scope.search = function(){
             $scope.query = $scope.inputbox;
         }
@@ -22,6 +22,9 @@ boardApp.controller('boardController',
     	});
 
         $scope.loginService = loginService;
+        $scope.write = function(){
+            $location.path('/write');
+        }
     }]);
 
 
@@ -48,6 +51,9 @@ boardApp.controller('board_innerController',
         $scope.delete_board = function(){
             $scope.board.splice($routeParams.id, 1);
             alert('deleted!');
+            $location.path('/board');
+        };
+        $scope.list = function(){
             $location.path('/board');
         };
 

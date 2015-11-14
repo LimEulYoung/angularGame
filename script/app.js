@@ -78,13 +78,20 @@ myApp.factory('loginService', function() {
     return loginVariable;
 });
 myApp.controller('myAppController',
-    ['$scope','loginService',
-    function ($scope,loginService) {
+    ['$scope','loginService','$location',
+    function ($scope,loginService,$location) {
         $scope.loginService = loginService;
         $scope.isLogouted = function(){
             $scope.loginService.isLogout = !$scope.loginService.isLogout;
             $scope.loginService.isLogin = !$scope.loginService.isLogin;
             $scope.loginService.username = '';
             $scope.loginService.password = '';
-        }      
+        }
+        $scope.login = function(){
+            $location.path('/login');
+        }
+        $scope.signup = function(){
+            $location.path('/signin');
+        }
+
     }]);

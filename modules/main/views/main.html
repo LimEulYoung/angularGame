@@ -1,7 +1,30 @@
-<div class="text-center">welcome!!</div>
-<div class="row">
-<div class="col-md-3"></div>
-	<div class="col-md-6 text-center">
-		<img src="img/backgroundimg.png" alt="백그라운드 사진">
-	</div>
-</div>
+
+  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="http://placehold.it/1900x1080&text=Slide One" alt="Chania" width="460" height="345">
+      </div>
+
+      <div class="item">
+        <img src="http://placehold.it/1900x1080&text=Slide Two" alt="Chania" width="460" height="345">
+      </div>
+    
+      <div class="item">
+        <img src="http://placehold.it/1900x1080&text=Slide Three" alt="Flower" width="460" height="345">
+      </div>
+
+    <!-- Left and right controls -->
+  </div>
+<script>
+    $('.carousel').carousel({
+        interval: 5000 //changes the speed
+    })
+</script>

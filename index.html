@@ -1,41 +1,79 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title></title>
-	<link rel="stylesheet" href="css/bootstrap.min.css"/>
-	<link rel="stylesheet" href="css/app.css">
-	<link rel="stylesheet" href="css/quake.css">
-	<script scr="lib/angular/angular-ui.js"></script>
-	<script src="lib/bootstrap.min.js"></script>
-	<script src="lib/jquery-1.11.3.min.js"></script>
-	<script src="lib/angular/angular.min.js"></script>
-	<script src="lib/angular/angular-route.min.js"></script>
-	<script scr="lib/angular/angular-cookies.min.js"></script>
-	<script src="script/app.js"></script>
-	<script src="modules/game/controller.js"></script>
-	<script src="modules/main/controller.js"></script>
-	<script src="modules/game/game1/controller.js"></script>
-	<script src="modules/game/game2/controller.js"></script>
-	<script src="modules/game/game3/controller.js"></script>
-	<script src="modules/main/services.js"></script>
-	<script src="modules/game/game1/game.js"></script>
-	<script src="modules/login/controller.js"></script>
-	<script src="modules/ranking/controller.js"></script>
-	<script src="modules/dashboard/controller.js"></script>
-	<script src="modules/signin/controller.js"></script>
-
-</head>
-<body ng-app="myApp" ng-controller='myAppController'>
-	<a href="#/main">goto main</a>
-	<a href="#/login" ng-show='loginService.isLogin'>login</a>
-	<a href="#/signin" ng-show='loginService.isLogin'>signin</a>
-	<a href="#/main" ng-show='loginService.isLogout' ng-click='isLogouted()'>logout</a>
-	<span ng-show='loginService.isLogout'>hello,{{loginService.username}}!</span>
-	<hr>
-	<a href="#/main">main</a>
-	<a href="#/game">game</a>
-	<a href="#/board">dashboard</a>
-	<a href="#/ranking">ranking</a>
-	<div ng-view></div>
-</body>
+	<head>
+		<title>angular games</title>
+		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<script src="lib/jquery-1.11.3.min.js"></script>
+		<script src="lib/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/app.css">
+		<link rel="stylesheet" href="css/quake.css">
+		<script scr="lib/angular/angular-ui.js"></script>
+		<script src="lib/angular/angular.min.js"></script>
+		<script src="lib/angular/angular-route.min.js"></script>
+		<script scr="lib/angular/angular-cookies.min.js"></script>
+		<script src="script/app.js"></script>
+		<script src="modules/game/controller.js"></script>
+		<script src="modules/main/controller.js"></script>
+		<script src="modules/game/game1/controller.js"></script>
+		<script src="modules/game/game2/controller.js"></script>
+		<script src="modules/game/game3/controller.js"></script>
+		<script src="modules/main/services.js"></script>
+		<script src="modules/game/game1/game.js"></script>
+		<script src="modules/login/controller.js"></script>
+		<script src="modules/ranking/controller.js"></script>
+		<script src="modules/dashboard/controller.js"></script>
+		<script src="modules/signin/controller.js"></script>
+		
+	</head>
+	<body ng-app="myApp" ng-controller='myAppController'>
+		<nav class="navbar navbar-default">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#/main">Anguar Games</a>
+				</div>
+				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+					<ul class="nav navbar-nav">
+						<form class="navbar-form navbar-left" role="search">
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Search">
+							</div>
+							<button type="submit" class="btn btn-default">Submit</button>
+						</form>
+						<li class="dropdown">
+							<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Game <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#/game">game home</a></li>
+								<li role="separator" class="divider"></li>
+								<li><a href="#/game1">memory game</a></li>
+								<li><a href="#/game2">color game</a></li>
+								<li><a href="#/game3">break egg</a></li>
+							</ul>
+						</li>
+						<li><a href="#/ranking">Ranking</a></li>
+						<li><a href="#/board">board</a></li>
+					</ul>
+					<ul class="nav navbar-nav navbar-right">
+					<div ng-show='loginService.isLogin'>
+						<button type="button" class="btn btn-default navbar-btn" ng-click='login()'>Sign in</button>
+						<button type="button" class="btn btn-default navbar-btn" ng-click='signup()'>Sign up</button>
+					</div>
+						<div class="dropdown" ng-show='loginService.isLogout'>
+							<button class="btn btn-default navbar-btn dropdown-toggle" type="button" data-toggle="dropdown">{{loginService.username}}
+							<span class="caret"></span></button>
+							<ul class="dropdown-menu">
+								<li><a href="#/main" ng-click='isLogouted()'>log out</a></li>
+							</ul>
+						</div>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div ng-view></div>
+	</body>
 </html>

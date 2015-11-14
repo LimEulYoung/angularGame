@@ -23,7 +23,8 @@ signinApp.controller('signinController',
         	var count = 0;
         	for(var i = $scope.user.length - 1; i >= 0; i--){
               	if ($scope.username == $scope.user[i].username) {
-                	$scope.errormessage2 = 'id is already used';
+                	$scope.errormessage2 = 'The ID is already using!!';
+                  $scope.isID=true;
                 	count++;
                 	break;
               	};
@@ -31,14 +32,15 @@ signinApp.controller('signinController',
             if(count == 0){
               		valiad_id = true;
               		$scope.errormessage2='';
+                  $scope.isID=false;
               	}
 
         	if (($scope.password == $scope.password2) && valiad_id) {
         		$scope.signin();
-        		alert('hi!'+$scope.username);
         	}
         	else if(valiad_id && ($scope.password != $scope.password2)){
-        		$scope.errormessage = 'different password!!';
+        		$scope.errormessage = 'Please confirm your password!!';
+            $scope.isPWD = true;
         	}
         }
         $scope.signin = function(){
